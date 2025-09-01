@@ -1,0 +1,33 @@
+training:
+  seed: 2024
+  batch_size: 128
+  epochs: 4000
+  save_model_every: 1000
+  use_lookahead: True 
+  lookahead_alpha: 0.5 
+  lookahead_k: 6 
+  learning_rate:
+    initial: 1e-3
+    final: 1e-5
+    scheduler: "warmup_cosine_decay"
+
+data:
+  data_dir: "preprocessed_data"
+
+solver:
+  type: "Tsit5" #"Dopri8"
+  rtol: 1e-4
+  atol: 1e-7
+  max_steps: 50000
+  interpolation: "Cubic"
+
+paths:
+  model_checkpoints: "model_checkpoints"
+  training_metrics_image: "deeponet_training_metrics.png"
+  results: "resultsV2/results"
+
+network:
+  branch_hidden_size: 200
+  branch_num_layers: 6
+  trunk_hidden_size: 200
+  trunk_num_layers: 6
