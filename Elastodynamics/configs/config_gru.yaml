@@ -1,0 +1,33 @@
+training:
+  seed: 2024
+  batch_size: 128
+  epochs: 4000
+  save_model_every: 1000
+  use_lookahead: True
+  lookahead_alpha: 0.7 
+  lookahead_k: 8 
+  learning_rate:
+    initial: 1e-3
+    final: 1e-5
+    scheduler: "warmup_cosine_decay"
+  loss_weight_component_0: 1.0 
+  loss_weight_component_1: 1.0
+
+data:
+  data_dir: "preprocessed_data"
+  normalization_method: "maxabs"  # Options: "maxabs" or "standard"
+
+paths:
+  model_checkpoints: "model_checkpoints"
+  training_metrics_image: "gru_deeponet_training_metrics.png"
+  results: "resultsV2_gru/results"
+
+network:
+  branch_hidden_size: 112  
+  branch_num_layers: 6 
+  trunk_hidden_size: 200 
+  trunk_num_layers: 6 
+
+gru:
+  use_layer_norm: True 
+  dropout_rate: 0.0
